@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+
+{% block javascripts %}{% endblock %}
+
+
+{% block body %}
+    <style>{% include 'style.css' %}</style>
+    {# --------------- begin html  ---------------------- #}
+
+
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Bienvenue Dans Soja Freres</h1>
+        <p class="lead">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
+            rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto
+            beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
+            fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam</p>
+        <hr class="my-4">
+        <p>Découvrer nos Dérniers projets par </p>
+        <a class="btn btn-dark btn-lg" id="btnchercher" href="{{ path('projets') }}" role="button">Découvrir</a>
+    </div>
+
+
+    <div class="container">
+        <h2 class="text-center">Les dérniers projets</h2>
+        <div class="row flex">
+            {% for Projet in Projets %}
+                <div class="col-3">
+                    <div class="card  mb-3">
+                        <div class="card-body text-dark">
+                            <h5 class="card-title">
+                                <a style="font-weight: bold" href="{{ path('Projet.afficher', {id: Projet.id, slug: Projet.slug}) }}" >{{ Projet.titre }}</a>
+                            </h5>
+                            <p class="card-text" style="font-weight: bold; font-size: large">{{ Projet.superficie }} km²</p>
+                            <div class="badge bg-info text-wrap {% if Projet.etat == false %}badge bg-warning text-wrap {% endif %}">
+                                {% if Projet.etat == true %}Projet Réalisé{% else %}
+
+                                    Projet En cours ...{% endif%}</div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+
+    {# --------------- end html ---------------------- #}
+
+
+
+
+
+<script>
+
+    {# --------------- begin script ---------------------- #}
+    {# --------------- end script ---------------------- #}
+</script>
+
+
+
+
+
+{% endblock %}

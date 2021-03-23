@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title Projet.titre %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md 8">
+
+        </div>
+        <div class="col-md-4">
+            <h1>{{ Projet.titre }}</h1>
+            <h4>{{ Projet.description | nl2br}}</h4>
+            <h5>{{ Projet.superficie }} km</h5>
+
+        </div>
+
+
+    </div>
+    <div class="nav nav nav-tabs" id="tabb"></div>
+
+</div>
+{% endblock %}
