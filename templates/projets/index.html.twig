@@ -1,10 +1,76 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Projets{% endblock %}
+{% block title %}Nos projets{% endblock %}
 
 {% block body %}
     <style>{% include 'style.css' %}</style>
     {# --------------- begin html  ---------------------- #}
+
+
+
+    <style>
+        .card:hover {
+            transform: scale(1.02);
+            transition: 0.2s ease all;
+            box-shadow: 0px 0px 5px black;
+        }
+    </style>
+
+    <div class="container mt-4">
+        <h1 class="font-weight-light text-center">Nos Projets </h1>
+        <div class="row flex">
+            {% for projet in projets %}
+                <div class="col-4">
+
+                    <div class="card mb-4">
+                        {% if projet.filename%}
+                            <img class="img-thumbnail" src="{{ vich_uploader_asset(projet,'imageFile')}}" alt="card-img-top" style="width: 100%; height: auto">
+
+
+                        {% endif %}
+
+
+
+                        <div class="card-body text-dark">
+
+
+
+
+                            <h5 class="card-title">
+                                <a href="{{ path('Projet.afficher', {slug: projet.slug, id: projet.id}) }}">
+                                    {{ projet.titre }}
+                                </a>
+                            </h5>
+                            <p class="card-text">
+                                {{ projet.description |nl2br }}
+                            </p>
+
+                            <div class="badge badge-primary {% if projet.etat == false %}badge badge-warning {% endif %}">
+                                {% if projet.etat == true %}Projet Réalisé{% else %}
+
+                                    Projet En cours ...{% endif%}</div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            {% endfor %}
+        </div>
+
+        <div class="navigation">
+            {{ knp_pagination_render(projets) }}
+        </div>
+    </div>
+
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+
+{# --------------- begin html  ---------------------- #}
+
+{% block body %}
+<style>{% include 'style.css' %}</style>
+<div class="jumbotron text-center">
+
+<div class="container">
+    <h2 class="text-center">Gérer Les Projets </h2>
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Action</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        {% for Projet in Projets %}
+        <tr>
+            <td>{{ Projet.titre }}</td>
+            <td>
+                <a class="btn btn-primary" href="{{ path('admin.projet.editer' , {id: Projet.id})}}">Editer</a>
+                <form onsubmit="return confirm('Êtes-vous vraiment sûr(e)?')" method="post" style="display: inline-block" action="{{ path('admin.projet.supprimer', {id: Projet.id}) }}">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button class="btn btn-danger">Supprimer</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+<div class="text-right">
+    <a href="{{ path('admin.projet.ajouter') }}" class="btn btn-secondary">Ajouter un nouveau projet</a>
+</div>
+</div>
+</div>
+
+ {% endblock %}

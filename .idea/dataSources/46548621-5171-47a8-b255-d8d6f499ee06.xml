@@ -15,57 +15,58 @@
     <schema id="9" parent="1" name="sama_newsletter"/>
     <schema id="10" parent="1" name="test"/>
     <schema id="11" parent="1" name="yescience"/>
-    <table id="12" parent="2" name="doctrine_migration_versions"/>
-    <table id="13" parent="2" name="projet"/>
-    <column id="14" parent="12" name="version">
-      <Position>1</Position>
-      <DataType>varchar(191)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="15" parent="12" name="executed_at">
-      <Position>2</Position>
-      <DataType>datetime|0</DataType>
-      <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
-    </column>
-    <column id="16" parent="12" name="execution_time">
-      <Position>3</Position>
-      <DataType>int(11)|0</DataType>
-      <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
-    </column>
-    <key id="17" parent="12" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>version</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="18" parent="13" name="id">
+    <table id="12" parent="2" name="projet"/>
+    <table id="13" parent="2" name="user"/>
+    <column id="14" parent="12" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="19" parent="13" name="titre">
+    <column id="15" parent="12" name="titre">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="20" parent="13" name="description">
+    <column id="16" parent="12" name="description">
       <Position>3</Position>
       <DataType>longtext|0</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
     </column>
-    <column id="21" parent="13" name="superficie">
+    <column id="17" parent="12" name="superficie">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="22" parent="13" name="etat">
+    <column id="18" parent="12" name="etat">
       <Position>5</Position>
       <DataType>tinyint(1)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="23" parent="13" name="date_creation">
+    <column id="19" parent="12" name="date_creation">
       <Position>6</Position>
       <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="20" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="21" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="22" parent="13" name="username">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="23" parent="13" name="password">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
     <key id="24" parent="13" name="PRIMARY">

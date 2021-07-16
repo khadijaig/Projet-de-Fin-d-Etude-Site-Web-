@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editer{% endblock %}
+
+
+{# --------------- begin html  ---------------------- #}
+
+{% block body %}
+    <style>{% include 'style.css' %}</style>
+
+<div class="container mt-4">
+    <h2>Editer Le projet</h2>
+    {{ form_start(Form) }}
+    <div class="row">
+        <div class="col-md-4">{{ form_row(Form.titre) }}</div>
+        <div class="col-md-4">{{ form_row(Form.superficie) }}</div>
+        <div class="col-md-4">{{ form_row(Form.imageFile) }}</div>
+
+    </div>
+
+    {{ form_widget(Form) }}
+    <button class="btn btn-primary">Sauvegarder</button>
+
+</div>
+
+{% endblock %}

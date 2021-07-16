@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Projet;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -22,16 +23,25 @@ class ProjetRepository extends ServiceEntityRepository
 
 
     /**
-     * @return Projet[]
+     * @return Query
      */
 
-
-    public function findActive():array
+    public function findActive(): Query
     {
-        return $this->findVisibleQuery('p')
-            ->andWhere('p.etat = true')
-            ->getQuery()
-            ->getResult();
+        return $this->findVisibleQuery()
+            ->andWhere('p.etat = true | false')
+            ->getQuery();
+
+    }
+
+    /**
+     * @return Query
+     */
+    public function findvisible(): Query
+    {
+        return $this->findVisibleQuery()
+            ->getQuery();
+
     }
 
     /**

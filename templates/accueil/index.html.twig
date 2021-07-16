@@ -11,29 +11,49 @@
     {# --------------- begin html  ---------------------- #}
 
 
-    <div class="jumbotron text-center">
+    <style>
+        .card:hover {
+            transform: scale(1.02);
+            transition: 0.2s ease all;
+            box-shadow: 0px 0px 5px black;
+        }
+    </style>
+
+
+
+
+
+    <div class="jumbotron text-center blue-grey lighten-5">
         <h1 class="display-4">Bienvenue Dans Soja Freres</h1>
         <p class="lead">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
             rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto
             beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
             fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam</p>
         <hr class="my-4">
-        <p>Découvrer nos Dérniers projets par </p>
-        <a class="btn btn-dark btn-lg" id="btnchercher" href="{{ path('projets') }}" role="button">Découvrir</a>
+        <p class="light-blue-text h5 mb-4">Découvrer nos Dérniers projets  </p>
+        <a class="btn btn-warning btn-lg text-dark" id="btnchercher" href="{{ path('projets') }}" role="button">Découvrir</a>
     </div>
 
 
     <div class="container">
-        <h2 class="text-center">Les dérniers projets</h2>
+        <h2 class="text-center font-weight-light">Les dérniers projets</h2>
         <div class="row flex">
             {% for Projet in Projets %}
                 <div class="col-3">
+
                     <div class="card  mb-3">
+                        {% if Projet.filename%}
+                            <img  class="img-thumbnail" src="{{ vich_uploader_asset(Projet,'imageFile')}}" alt="card-img-top" style="width: 100%; height: auto">
+
+
+                        {% endif %}
                         <div class="card-body text-dark">
                             <h5 class="card-title">
                                 <a style="font-weight: bold" href="{{ path('Projet.afficher', {id: Projet.id, slug: Projet.slug}) }}" >{{ Projet.titre }}</a>
                             </h5>
                             <p class="card-text" style="font-weight: bold; font-size: large">{{ Projet.superficie }} km²</p>
+
+
                             <div class="badge bg-info text-wrap {% if Projet.etat == false %}badge bg-warning text-wrap {% endif %}">
                                 {% if Projet.etat == true %}Projet Réalisé{% else %}
 
@@ -44,22 +64,59 @@
                     </div>
                 </div>
 
-            {% endfor %}
+
+
+        {% endfor %}
         </div>
     </div>
 
 
 
 
-    {# --------------- end html ---------------------- #}
+    {# --------------- begin service ---------------------- #}
+    <div class="container pt-5 my-5 z-depth-1">
+        <section class="p-md-3 mx-md-5 text-lg-left">
+            <div class="row d-flex justify-content-center">
+                <h2 class="font-weight-bold pb-4">Nos Services</h2>
+            </div>
+            <div class="row text-center d-flex justify-content-center mt-4">
+                <div class="col-lg-4 col-md-6 mb-5">
+                    <i class="fas fa-house-damage text-warning fa-3x mb-4"></i>
+                    <h4 class=" mb-4">Nos Service</h4>
+                    <p class="text-muted px-2 mb-lg-0">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-5">
+                    <i class="fas fa-tools text-warning fa-3x mb-4"></i>
+                    <h4 class=" mb-4">Feature 2</h4>
+                    <p class="text-muted px-2 mb-lg-0">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-5">
+                    <i class="fas fa-industry text-warning fa-3x mb-4"></i>
+                    <h4 class=" mb-4">Feature 3</h4>
+                    <p class="text-muted px-2 mb-md-0">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
 
 
 
+    {# --------------- end service ---------------------- #}
 
 
 <script>
 
     {# --------------- begin script ---------------------- #}
+
     {# --------------- end script ---------------------- #}
 </script>
 
